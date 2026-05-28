@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Grand Convocation 2026 Countdown</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right,#000000,#111111);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.left{
+    flex:1;
+    color:#FFD700;
+}
+
+.left h1{
+    font-size:70px;
+    margin:0;
+    line-height:1;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.left h2{
+    font-size:32px;
+    margin-top:20px;
+    color:white;
+    letter-spacing:3px;
+}
+
+.university{
+    font-size:22px;
+    margin-top:10px;
+    color:#FFD700;
+    letter-spacing:2px;
+    font-weight:bold;
+}
+
+.timer{
+    display:flex;
+    gap:15px;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+
+.box{
+    background:rgba(255,215,0,0.08);
+    border:2px solid #FFD700;
+    border-radius:15px;
+    width:140px;
+    height:140px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 0 15px rgba(255,215,0,0.3);
+}
+
+.number{
+    font-size:48px;
+    font-weight:bold;
+    color:#FFD700;
+}
+
+.label{
+    font-size:18px;
+    color:white;
+    letter-spacing:2px;
+}
+
+.tagline{
+    margin-top:30px;
+    color:#FFD700;
+    font-size:22px;
+    font-style:italic;
+}
+
+.right{
+    flex:1;
+    text-align:center;
+}
+
+.right img{
+    width:100%;
+    max-width:500px;
+    filter: drop-shadow(0 0 20px gold);
+}
+
+/* Mobile */
+@media(max-width:900px){
+    .container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .left h1{
+        font-size:50px;
+    }
+
+    .timer{
+        justify-content:center;
+    }
+
+    .box{
+        width:110px;
+        height:110px;
+    }
+
+    .number{
+        font-size:36px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <h1>THE GRAND<br>CONVOCATION</h1>
+
+        <!-- ADDED TEXT -->
+        <div class="university">Universal College of Learning</div>
+
+        <h2>COUNTDOWN BEGINS!</h2>
+
+        <div class="timer">
+
+            <div class="box">
+                <div class="number" id="days">0</div>
+                <div class="label">DAYS</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="hours">0</div>
+                <div class="label">HOURS</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="minutes">0</div>
+                <div class="label">MINUTES</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="seconds">0</div>
+                <div class="label">SECONDS</div>
+            </div>
+
+        </div>
+
+        <div class="tagline">
+            "Shaping Futures, Celebrating Excellence"
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right">
+        <img src="Convocation.png" alt="Grand Convocation 2026 Logo">
+    </div>
+
+</div>
+
+<script>
+
+var countDownDate = new Date("June 17, 2026 14:00:00").getTime();
+
+var x = setInterval(function(){
+
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000*60*60*24));
+    var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    var seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+    if(distance < 0){
+        clearInterval(x);
+        document.querySelector(".timer").innerHTML =
+        "<h2 style='color:gold'>EVENT STARTED!</h2>";
+    }
+
+},1000);
+
+</script>
+
+</body>
+</html>
